@@ -21,7 +21,6 @@ public class SlotLabel extends ColoredLabel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		System.out.println(cellRef);
-		setFocusColor();
 		currentCell.setCellRef(cellRef);
 	}
 	

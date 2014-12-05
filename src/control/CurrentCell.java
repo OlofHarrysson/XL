@@ -19,6 +19,9 @@ public class CurrentCell extends Observable {
 		slotLabel.setNormalColor();
 		
 		this.cellRef = cellRef;
+		SlotLabel newSlotLabel = slotLabels.getSlotLabel(cellRef);
+		newSlotLabel.setFocusColor();
+		
 		setChanged();
 		notifyObservers();
 	}

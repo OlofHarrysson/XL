@@ -18,8 +18,9 @@ public class Sheet {
 		// If content is a comment
 		}else if (content.substring(0, 1).equals("#")) {
 			XCell xCell = factory.makeXCellComment(cellRef, content);
+			contents.put(cellRef, xCell);
 		}
-		return "hej";
+		return content;
 	}
 
 }
