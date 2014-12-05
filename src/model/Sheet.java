@@ -1,6 +1,9 @@
 package model;
 
+import java.io.IOException;
 import java.util.HashMap;
+
+import util.XLException;
 
 public class Sheet {
 	
@@ -12,15 +15,30 @@ public class Sheet {
 		factory = new XCellFactoryImplementation();
 	}
 	
-	public String setCellContent(String cellRef, String content) {
+	public String setCellContent(String cellRef, String content) throws IOException, XLException{
+		
 		if(content.equals("")) {
 			return "";
 		// If content is a comment
 		}else if (content.substring(0, 1).equals("#")) {
 			XCell xCell = factory.makeXCellComment(cellRef, content);
 			contents.put(cellRef, xCell);
+			return xCell.toString();
+		}else{
+			try {
+				XCell xCell = factory.makeXCellExpr(cellRef, content);
+				return xCell.toString();
+			} catch (IOException e) {
+				throw new IOException(e.getMessage());
+			} catch (XLException xle) {
+				throw new XLException(xle.getMessage());
+			}
 		}
-		return content;
 	}
+	
+	private void setErrorMessage(String errorMessage){
+		System.out.println(errorMessage);
+	}
+		
 
 }

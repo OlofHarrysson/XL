@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JTextField;
 
+import util.XLException;
 import model.Sheet;
 import control.CurrentCell;
 
@@ -17,11 +19,13 @@ public class Editor extends JTextField implements Observer, ActionListener {
 	private CurrentCell currentCell;
 	private Sheet sheet;
 	private SlotLabels slotLabels;
+	private StatusLabel statusLabel;
 	
-    public Editor(CurrentCell currentCell, Sheet sheet) {
+    public Editor(CurrentCell currentCell, Sheet sheet, StatusLabel statusLabel) {
         setBackground(Color.WHITE);
         this.currentCell = currentCell;
         this.sheet = sheet;
+        this.statusLabel = statusLabel;
         currentCell.addObserver(this);
         addActionListener(this);
     }
@@ -39,9 +43,18 @@ public class Editor extends JTextField implements Observer, ActionListener {
 		SlotLabel slotLabel = slotLabels.getSlotLabel(cellRef);
 		
 		String editorText = getText();
-		String cellContent = sheet.setCellContent(cellRef, editorText);
 		
-		slotLabel.setText(cellContent);
+		try {
+			String cellContent = sheet.setCellContent(cellRef, editorText);
+			slotLabel.setText(cellContent);
+		} catch (IOException exp) {
+			statusLabel.setText(exp.getMessage());
+		} catch (XLException xle) {
+			statusLabel.setText(xle.getMessage());
+		}
+		
+		
+		
 	}
 	
 	public void setSlotLabels(SlotLabels slotLabels) {

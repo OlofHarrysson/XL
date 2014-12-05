@@ -2,6 +2,7 @@ package model;
 
 import java.io.IOException;
 
+import util.XLException;
 import expr.Expr;
 import expr.ExprParser;
 
@@ -21,6 +22,8 @@ public class XCellFactoryImplementation implements XCellFactory {
 			expr = parser.build(content);
 		} catch (IOException e) {
 			throw new IOException(e.getMessage());
+		} catch (XLException xle) {
+			throw new XLException(xle.getMessage());
 		}
 		System.out.println("XCellExpr created");
 		return new XCellExpr(expr);
