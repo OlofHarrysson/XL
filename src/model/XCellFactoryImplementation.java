@@ -8,6 +8,7 @@ import expr.ExprParser;
 public class XCellFactoryImplementation implements XCellFactory {
 	
 	public XCell makeXCellComment(String cellRef, String content) {
+		System.out.println("XCellComment created");
 		return new XCellComment(content);
 	}
 
@@ -21,8 +22,7 @@ public class XCellFactoryImplementation implements XCellFactory {
 		} catch (IOException e) {
 			throw new IOException(e.getMessage());
 		}
-		
+		System.out.println("XCellExpr created");
 		return new XCellExpr(expr);
 	}
-
 }
