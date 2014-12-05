@@ -11,6 +11,7 @@ import java.awt.print.Printable;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import control.CurrentCell;
+import model.Sheet;
 
 public class XL extends JFrame implements Printable {
     private static final int ROWS = 10, COLUMNS = 8;
@@ -29,9 +30,10 @@ public class XL extends JFrame implements Printable {
         this.counter = counter;
         xlList.add(this);
         counter.increment();
+        Sheet sheet = new Sheet();
+        Editor editor = new Editor(currentCell, sheet);
         JPanel statusPanel = new StatusPanel(statusLabel, currentCell);
-        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentCell);
-        Editor editor = new Editor();
+        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentCell, editor);
         add(NORTH, statusPanel);
         add(CENTER, editor);
         add(SOUTH, sheetPanel);

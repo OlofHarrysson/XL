@@ -5,8 +5,8 @@ import static java.awt.BorderLayout.WEST;
 import control.CurrentCell;
 
 public class SheetPanel extends BorderPanel {
-    public SheetPanel(int rows, int columns, CurrentCell currentCell) {
+    public SheetPanel(int rows, int columns, CurrentCell currentCell, Editor editor) {
         add(WEST, new RowLabels(rows));
-        add(CENTER, new SlotLabels(rows, columns, currentCell));
+        add(CENTER, new SlotLabels(rows, columns, currentCell, editor));
     }
 }

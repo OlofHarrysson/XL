@@ -11,7 +11,7 @@ import control.CurrentCell;
 public class SlotLabels extends GridPanel {
     private List<SlotLabel> labelList;
 
-    public SlotLabels(int rows, int cols, CurrentCell currentCell) {
+    public SlotLabels(int rows, int cols, CurrentCell currentCell, Editor editor) {
         super(rows + 1, cols);
         labelList = new ArrayList<SlotLabel>(rows * cols);
         for (char ch = 'A'; ch < 'A' + cols; ch++) {
@@ -28,7 +28,9 @@ public class SlotLabels extends GridPanel {
             }
         }
         currentCell.setSlotLabels(this);
-        currentCell.setCellRef("A1"); 
+        currentCell.setCellRef("A1");
+        editor.setSlotLabels(this);
+        
         
         SlotLabel firstLabel = labelList.get(0);
         firstLabel.setBackground(Color.YELLOW);
