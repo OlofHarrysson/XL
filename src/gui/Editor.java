@@ -39,7 +39,7 @@ public class Editor extends JTextField implements Observer, ActionListener {
 		SlotLabel slotLabel = slotLabels.getSlotLabel(cellRef);
 		
 		String editorText = getText();
-		String cellContent = sheet.setCellContent(editorText);
+		String cellContent = sheet.setCellContent(cellRef, editorText);
 		
 		slotLabel.setText(cellContent);
 	}
