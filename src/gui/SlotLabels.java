@@ -60,8 +60,16 @@ public class SlotLabels extends GridPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 //		if(o.equals(sheet)){
+		for(int i = 0; i < labelList.size(); i++){
+			SlotLabel slotLabel = labelList.get(i);
+			slotLabel.setText("");
+		}
+		
 		HashMap<String,String> contents = sheet.getSheetContents();
 //		ArrayList<SlotLabel> tempSlots = new ArrayList<>();
+		
+		
+		
 		
 		for(String key : contents.keySet()){
 			

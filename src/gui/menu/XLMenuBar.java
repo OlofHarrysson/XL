@@ -8,9 +8,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
 import model.Sheet;
+import control.CurrentCell;
 
 public class XLMenuBar extends JMenuBar {
-    public XLMenuBar(XL xl, XLList xlList, StatusLabel statusLabel, Sheet sheet) {
+    public XLMenuBar(XL xl, XLList xlList, StatusLabel statusLabel, Sheet sheet, CurrentCell currentCell) {
         JMenu file = new JMenu("File");
         JMenu edit = new JMenu("Edit");
         file.add(new PrintMenuItem(xl, statusLabel));
@@ -18,7 +19,7 @@ public class XLMenuBar extends JMenuBar {
         file.add(new LoadMenuItem(xl, statusLabel));
         file.add(new NewMenuItem(xl));
         file.add(new CloseMenuItem(xl, xlList));
-        edit.add(new ClearMenuItem());
+        edit.add(new ClearMenuItem(sheet, currentCell));
         edit.add(new ClearAllMenuItem(sheet));
         add(file);
         add(edit);

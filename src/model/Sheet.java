@@ -122,8 +122,10 @@ public class Sheet extends Observable{
 		notifyObservers();
 	}
 	
-	public void clearCell(String cellref){
-		
+	public void clearCell(String cellRef){
+		contents.remove(cellRef);
+		setChanged();
+		notifyObservers();
 	}
 	
 	public HashMap<String, String> getSheetContents(){
