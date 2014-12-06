@@ -1,5 +1,6 @@
 package model;
 
+import util.XLException;
 import expr.Environment;
 
 public class XCellExprTest implements XCell {
@@ -10,8 +11,8 @@ public class XCellExprTest implements XCell {
 		this.msg = msg;
 	}
 	
-	public double value(Environment env) {
-		return 34404;
+	public double value(Environment env) throws XLException {
+		throw new XLException(msg);
 	}
 
 	public String displayString(Environment env) {
@@ -19,15 +20,12 @@ public class XCellExprTest implements XCell {
 	}
 
 	@Override
-	public double value(String name) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double value(String name) throws XLException {
+		throw new XLException(msg);
 	}
 
 	@Override
 	public String displayString(String cellRef) {
-		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
-
 }
