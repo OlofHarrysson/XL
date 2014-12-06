@@ -5,11 +5,9 @@ import expr.Expr;
 public class XCellExpr implements XCell
 {
 	private Expr cellExpr;
-	private String rawContent;
 	
-	public XCellExpr(Expr expression, String rawContent) {
+	public XCellExpr(Expr expression) {
 		cellExpr = expression;
-		this.rawContent = rawContent;
 	}
 
 	@Override
@@ -30,7 +28,4 @@ public class XCellExpr implements XCell
 		return cellExpr.value(this);
 	}
 	
-	public String getRawContent(){
-		return rawContent;
-	}
 }

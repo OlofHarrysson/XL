@@ -11,10 +11,12 @@ public class Sheet extends Observable{
 	
 	private HashMap<String, XCell> contents;
 	private XCellFactoryImplementation factory;
+	private HashMap<String, String> rawContents;
 	
 	public Sheet () {
 		contents = new HashMap<String, XCell>();
 		factory = new XCellFactoryImplementation();
+		rawContents = new HashMap<String, String>();
 	}
 	
 	public void setCellContent(String cellRef, String rawContent) throws IOException, XLException{
@@ -33,6 +35,7 @@ public class Sheet extends Observable{
 				XCell xCell = factory.makeXCellExpr(cellRef, validContent);
 				
 				contents.put(cellRef, xCell);
+				rawContents.put(cellRef, rawContent);
 //				setChanged();
 //				notifyObservers();
 				
@@ -80,9 +83,8 @@ public class Sheet extends Observable{
 	}
 	
 	public String getRawCellContent(String cellRef) {
-		if (contents.containsKey(cellRef)){
-			XCell xCell = contents.get(cellRef);
-			return xCell.getRawContent();
+		if (rawContents.containsKey(cellRef)){
+			return rawContents.get(cellRef);
 		}else{
 			return "";
 		}
