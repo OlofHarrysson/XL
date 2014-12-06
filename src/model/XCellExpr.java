@@ -12,8 +12,8 @@ public class XCellExpr implements XCell
 	}
 
 	@Override
-	public String displayString(Environment env) {
-		return String.valueOf(cellExpr.value(env));
+	public String displayString(String cellRef) {
+		return String.valueOf(value(cellRef));
 	}
 	
 	public String toString() {

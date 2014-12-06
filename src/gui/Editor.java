@@ -33,10 +33,8 @@ public class Editor extends JTextField implements Observer, ActionListener {
 	@Override
 	public void update(Observable o, Object arg) {
 		String cellRef = currentCell.getCellRef();
-		SlotLabel slotLabel = slotLabels.getSlotLabel(cellRef);
-		
 		String content = sheet.getCellContent(cellRef);
-		slotLabel.setText(content);
+		setText(content);
 	}
 
 
@@ -48,7 +46,8 @@ public class Editor extends JTextField implements Observer, ActionListener {
 		String editorText = getText();
 		
 		try {
-			String cellContent = sheet.setCellContent(cellRef, editorText);
+			sheet.setCellContent(cellRef, editorText);
+			String cellContent = sheet.getCellContent(cellRef);
 			slotLabel.setText(cellContent);
 		} catch (IOException exp) {
 			statusLabel.setText(exp.getMessage());

@@ -18,4 +18,16 @@ public class XCellExprTest implements XCell {
 		return "";
 	}
 
+	@Override
+	public double value(String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String displayString(String cellRef) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

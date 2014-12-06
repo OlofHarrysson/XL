@@ -8,8 +8,7 @@ import util.XLException;
 
 public class XCellFactoryImplementation implements XCellFactory {
 	
-	public XCell makeXCellComment(String cellRef, String content) {
-		System.out.println("XCellComment created");
+	public XCell makeXCellComment(String content) {
 		return new XCellComment(content);
 	}
 
@@ -25,7 +24,6 @@ public class XCellFactoryImplementation implements XCellFactory {
 		} catch (XLException xle) {
 			throw new XLException(xle.getMessage());
 		}
-		System.out.println("XCellExpr created");
 		return new XCellExpr(expr);
 	}
 }

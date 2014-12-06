@@ -10,17 +10,18 @@ public class XCellComment implements XCell
 		this.comment = comment;
 	}
 	
+	// Returns comment without #
 	public String toString() {
-		return comment;
-	}
-
-	@Override
-	public String displayString(Environment env) {
 		if(comment.length() > 1) {
 			return comment.substring(1);
 		} else {
 			return "";
 		}
+	}
+
+	@Override
+	public String displayString(String cellRef) {
+		return comment;
 	}
 
 	@Override

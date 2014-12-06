@@ -6,5 +6,5 @@ public interface XCell extends Environment
 {
 	
 	
-	public String displayString(Environment env);
+	public String displayString(String cellRef);
 }
