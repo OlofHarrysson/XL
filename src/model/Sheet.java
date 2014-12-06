@@ -27,6 +27,7 @@ public class Sheet {
 		}else{
 			try {
 				XCell xCell = factory.makeXCellExpr(cellRef, content);
+				
 				return xCell.toString();
 			} catch (IOException e) {
 				throw new IOException(e.getMessage());
@@ -38,6 +39,16 @@ public class Sheet {
 	
 	private void setErrorMessage(String errorMessage){
 		System.out.println(errorMessage);
+	}
+	
+	public String getCellContent(String cellRef) {
+		if (contents.containsKey(cellRef)){
+			XCell xCell = contents.get(cellRef);
+			double value = xCell.value(cellRef);
+			return String.valueOf(value);
+		}else{
+			return "";
+		}
 	}
 		
 

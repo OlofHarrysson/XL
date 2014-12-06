@@ -27,9 +27,10 @@ public class SlotLabels extends GridPanel {
                 labelList.add(label);
             }
         }
+        editor.setSlotLabels(this);
         currentCell.setSlotLabels(this);
         currentCell.setCellRef("A1");
-        editor.setSlotLabels(this);
+        
         
         
         SlotLabel firstLabel = labelList.get(0);

@@ -33,7 +33,10 @@ public class Editor extends JTextField implements Observer, ActionListener {
 	@Override
 	public void update(Observable o, Object arg) {
 		String cellRef = currentCell.getCellRef();
-		//TODO
+		SlotLabel slotLabel = slotLabels.getSlotLabel(cellRef);
+		
+		String content = sheet.getCellContent(cellRef);
+		slotLabel.setText(content);
 	}
 
 
@@ -52,9 +55,6 @@ public class Editor extends JTextField implements Observer, ActionListener {
 		} catch (XLException xle) {
 			statusLabel.setText(xle.getMessage());
 		}
-		
-		
-		
 	}
 	
 	public void setSlotLabels(SlotLabels slotLabels) {

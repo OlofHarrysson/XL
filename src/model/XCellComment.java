@@ -1,6 +1,5 @@
 package model;
 
-import util.XLException;
 import expr.Environment;
 
 public class XCellComment implements XCell
@@ -9,10 +8,6 @@ public class XCellComment implements XCell
 	
 	public XCellComment(String comment) {
 		this.comment = comment;
-	}
-	
-	public double value(Environment env) throws XLException {
-		return 0;
 	}
 	
 	public String toString() {
@@ -26,5 +21,10 @@ public class XCellComment implements XCell
 		} else {
 			return "";
 		}
+	}
+
+	@Override
+	public double value(String cellRef) {
+		return 0;
 	}
 }

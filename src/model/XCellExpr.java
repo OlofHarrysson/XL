@@ -10,10 +10,6 @@ public class XCellExpr implements XCell
 	public XCellExpr(Expr expression) {
 		cellExpr = expression;
 	}
-	
-	public double value(Environment env) {
-		return cellExpr.value(env);
-	}
 
 	@Override
 	public String displayString(Environment env) {
@@ -26,5 +22,10 @@ public class XCellExpr implements XCell
 	
 	public Expr getExpr() {
 		return cellExpr;
+	}
+
+	@Override
+	public double value(String cellRef) {
+		return cellExpr.value(this);
 	}
 }
