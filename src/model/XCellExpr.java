@@ -1,14 +1,15 @@
 package model;
 
-import expr.Environment;
 import expr.Expr;
 
 public class XCellExpr implements XCell
 {
 	private Expr cellExpr;
+	private String rawContent;
 	
-	public XCellExpr(Expr expression) {
+	public XCellExpr(Expr expression, String rawContent) {
 		cellExpr = expression;
+		this.rawContent = rawContent;
 	}
 
 	@Override
@@ -27,5 +28,9 @@ public class XCellExpr implements XCell
 	@Override
 	public double value(String cellRef) {
 		return cellExpr.value(this);
+	}
+	
+	public String getRawContent(){
+		return rawContent;
 	}
 }

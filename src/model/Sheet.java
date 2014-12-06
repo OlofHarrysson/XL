@@ -79,10 +79,10 @@ public class Sheet extends Observable{
 		}
 	}
 	
-	public String getCellContentExpr(String cellRef) {
+	public String getRawCellContent(String cellRef) {
 		if (contents.containsKey(cellRef)){
 			XCell xCell = contents.get(cellRef);
-			return xCell.toString();
+			return xCell.getRawContent();
 		}else{
 			return "";
 		}

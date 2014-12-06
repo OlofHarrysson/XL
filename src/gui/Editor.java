@@ -33,7 +33,7 @@ public class Editor extends JTextField implements Observer, ActionListener {
 	@Override
 	public void update(Observable o, Object arg) {
 		String cellRef = currentCell.getCellRef();
-		String content = sheet.getCellContentExpr(cellRef);
+		String content = sheet.getRawCellContent(cellRef);
 		setText(content);
 	}
 

@@ -1,7 +1,5 @@
 package model;
 
-import expr.Environment;
-
 public class XCellComment implements XCell
 {
 	private String comment;
@@ -27,5 +25,9 @@ public class XCellComment implements XCell
 	@Override
 	public double value(String cellRef) {
 		return 0;
+	}
+	
+	public String getRawContent(){
+		return comment;
 	}
 }

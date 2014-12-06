@@ -24,6 +24,6 @@ public class XCellFactoryImplementation implements XCellFactory {
 		} catch (XLException xle) {
 			throw new XLException(xle.getMessage());
 		}
-		return new XCellExpr(expr);
+		return new XCellExpr(expr, content);
 	}
 }
