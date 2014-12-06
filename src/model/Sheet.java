@@ -1,12 +1,13 @@
 package model;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Observable;
 
 import util.XLException;
 
-public class Sheet {
+public class Sheet extends Observable{
 	
 	private HashMap<String, XCell> contents;
 	private XCellFactoryImplementation factory;
@@ -114,6 +115,26 @@ public class Sheet {
 		}
 		return sb.toString();
 	}
+	
+	public void clearAllContent(){
+		contents = new HashMap<String, XCell>();
+		setChanged();
+		notifyObservers();
+	}
+	
+	public void clearCell(String cellref){
 		
+	}
+	
+	public HashMap<String, String> getSheetContents(){
+		HashMap<String, String> newContents = new HashMap<>();
+		for(String key : contents.keySet()){
+			newContents.put(key, contents.get(key).toString());
+		}
+		return newContents;
+	}
+	
 //TODO deleteKey from contents
 }
+
+

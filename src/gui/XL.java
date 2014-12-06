@@ -33,11 +33,11 @@ public class XL extends JFrame implements Printable {
         Sheet sheet = new Sheet();
         Editor editor = new Editor(currentCell, sheet, statusLabel);
         JPanel statusPanel = new StatusPanel(statusLabel, currentCell);
-        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentCell, editor);
+        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentCell, editor, sheet);
         add(NORTH, statusPanel);
         add(CENTER, editor);
         add(SOUTH, sheetPanel);
-        setJMenuBar(new XLMenuBar(this, xlList, statusLabel));
+        setJMenuBar(new XLMenuBar(this, xlList, statusLabel, sheet));
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
