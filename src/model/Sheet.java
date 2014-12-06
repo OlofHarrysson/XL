@@ -24,11 +24,9 @@ public class Sheet {
 			XCell xCell = factory.makeXCellComment(cellRef, content);
 			contents.put(cellRef, xCell);
 			return xCell.toString();
-		}
-//		else if(!contents.containsKey(cellRef)){
-//			throw new XLException("Invalid cell ref");
-//		}
-		else{
+		}else if(!contents.containsKey(cellRef)){
+			throw new XLException("Invalid cell ref");
+		}else{
 			try {
 				XCell xCell = factory.makeXCellExpr(cellRef, content);
 				contents.put(cellRef, xCell);
