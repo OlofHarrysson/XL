@@ -33,6 +33,9 @@ public class Sheet extends Observable{
 				XCell xCell = factory.makeXCellExpr(cellRef, validContent);
 				
 				contents.put(cellRef, xCell);
+//				setChanged();
+//				notifyObservers();
+				
 			} catch (IOException e) {
 				throw new IOException(e.getMessage());
 			} catch (XLException xle) {
@@ -71,6 +74,15 @@ public class Sheet extends Observable{
 		if (contents.containsKey(cellRef)){
 			XCell xCell = contents.get(cellRef);
 			return xCell.displayString(cellRef);
+		}else{
+			return "";
+		}
+	}
+	
+	public String getCellContentExpr(String cellRef) {
+		if (contents.containsKey(cellRef)){
+			XCell xCell = contents.get(cellRef);
+			return xCell.toString();
 		}else{
 			return "";
 		}
